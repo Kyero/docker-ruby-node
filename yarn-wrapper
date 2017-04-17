@@ -1,5 +1,12 @@
 #!/bin/bash
 
-yarn install
+echo -n "Checking JS modules... "
+if $(yarn check &> /dev/null); then
+  echo "OK 👍"
+else
+  echo "failed! 💥"
+  echo "Updating JS modules..."
+  yarn install
+fi
 
 exec "$@"
