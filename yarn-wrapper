@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo -n "Checking JS modules... "
-if $(yarn check &> /dev/null); then
+
+if yarn check --integrity --verify-tree --silent; then
   echo "OK 👍"
 else
   echo "failed! 💥"
