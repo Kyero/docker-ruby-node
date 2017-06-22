@@ -3,7 +3,7 @@
 check_command=$(yarn run 2> /dev/null | grep -qx '^\s\+-\s\+check$' && echo "yarn run check" || echo "yarn check --integrity --verify-tree")
 
 echo -n "Checking JS modules... "
-if eval $check_command --silent; then
+if eval $check_command --silent 2> /dev/null; then
   echo "OK 👍"
 else
   echo "failed! 💥"
