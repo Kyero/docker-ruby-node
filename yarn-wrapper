@@ -1,13 +1,14 @@
 #!/bin/bash
 
-echo -n "Checking JS modules... "
+check_command=$(yarn run 2> /dev/null | grep -qx '^\s\+-\s\+check$' && echo "yarn run check" || echo "yarn check --integrity --verify-tree")
 
-if yarn check --integrity --verify-tree --silent; then
+echo -n "Checking JS modules... "
+if eval $check_command --silent 2> /dev/null; then
   echo "OK 👍"
 else
   echo "failed! 💥"
   echo "Updating JS modules..."
-  yarn install
+  yarn install --check-files
 fi
 
 exec "$@"
