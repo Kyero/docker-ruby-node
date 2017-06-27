@@ -1,4 +1,4 @@
-FROM kyero/ruby
+FROM kyero/ruby:2.4.1
 
 LABEL maintainer "Michael Baudino <michael.baudino@alpine-lab.com>"
 
