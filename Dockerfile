@@ -17,7 +17,8 @@ RUN sed -i 's/^deb-src/# deb-src/' /etc/apt/sources.list \
       yarn \
  && rm -rf /var/lib/apt/lists/*
 
-# Use a bundle wrapper as entrypoint.
-# It runs `bundle install` if necessary.
+# Use a yarn wrapper as entrypoint.
+# It runs `yarn install` if necessary.
 COPY yarn-wrapper /usr/local/bin/
 ENTRYPOINT ["bundler-wrapper", "yarn-wrapper"]
+CMD ["foreman", "start"]
