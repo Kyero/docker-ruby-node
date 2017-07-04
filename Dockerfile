@@ -15,7 +15,14 @@ RUN sed -i 's/^deb-src/# deb-src/' /etc/apt/sources.list \
  && apt-get install -y --no-install-recommends --no-install-suggests \
       nodejs \
       yarn \
+      libfontconfig \
  && rm -rf /var/lib/apt/lists/*
+
+# Install PhantomJS from Codeship (S3-hosted) packages
+ARG PHANTOMJS_VERSION="2.1.1"
+ARG PHANTOMJS_HOST="https://s3.amazonaws.com/codeship-packages"
+RUN curl -sSL "${PHANTOMJS_HOST}/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2" \
+  | tar -xvj --strip-components=2 --directory=/usr/local/bin/ "phantomjs-${PHANTOMJS_VERSION}-linux-x86_64/bin/phantomjs"
 
 # Use a yarn wrapper as entrypoint.
 # It runs `yarn install` if necessary.
