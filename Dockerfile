@@ -15,6 +15,7 @@ RUN sed -i 's/^deb-src/# deb-src/' /etc/apt/sources.list \
  && apt-get install -y --no-install-recommends --no-install-suggests \
       nodejs \
       yarn \
+      xvfb xauth qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x \
  && rm -rf /var/lib/apt/lists/*
 
 # Use a bundle wrapper as entrypoint.
