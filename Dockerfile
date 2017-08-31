@@ -4,9 +4,12 @@ LABEL maintainer "Michael Baudino <michael.baudino@alpine-lab.com>"
 
 # Install node from NodeSource (as advised in https://nodejs.org/en/download/package-manager/)
 # and yarn from the official repository
-RUN sed -i 's/^deb-src/# deb-src/' /etc/apt/sources.list \
+RUN buildDependencies=' \
+      curl \
+      apt-transport-https \
+    ' \
  && apt-get update \
- && apt-get install -y curl apt-transport-https \
+ && apt-get install -y ${buildDependencies} \
  && curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
  && echo 'deb https://deb.nodesource.com/node_7.x jessie main' > /etc/apt/sources.list.d/nodesource.list \
  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -15,6 +18,7 @@ RUN sed -i 's/^deb-src/# deb-src/' /etc/apt/sources.list \
  && apt-get install -y --no-install-recommends --no-install-suggests \
       nodejs \
       yarn \
+ && apt-get purge -y --auto-remove ${buildDependencies} \
  && rm -rf /var/lib/apt/lists/*
 
 # Use a yarn wrapper as entrypoint.
