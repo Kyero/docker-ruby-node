@@ -5,7 +5,6 @@ LABEL maintainer "Michael Baudino <michael.baudino@alpine-lab.com>"
 # Install node from NodeSource (as advised in https://nodejs.org/en/download/package-manager/)
 # and yarn from the official repository
 RUN buildDependencies=' \
-      curl \
       apt-transport-https \
     ' \
  && apt-get update \
