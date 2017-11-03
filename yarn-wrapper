@@ -1,9 +1,9 @@
 #!/bin/bash
 
-check_command=$(yarn run 2> /dev/null | grep -qx '^\s\+-\s\+check$' && echo "yarn run check" || echo "yarn check --integrity --verify-tree")
+check_command=$(yarn run 2> /dev/null | grep -qx '^\s\+-\s\+check$' && echo "yarn run --silent check" || echo "yarn check --integrity --verify-tree --silent")
 
 echo -n "Checking JS modules... "
-if eval $check_command --silent 2> /dev/null; then
+if eval ${check_command} 2> /dev/null; then
   echo "OK 👍"
 else
   echo "failed! 💥"
