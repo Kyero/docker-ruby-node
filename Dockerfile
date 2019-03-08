@@ -17,6 +17,8 @@ RUN buildDependencies=' \
  && apt-get install -y --no-install-recommends --no-install-suggests \
       nodejs \
       yarn \
+      g++ \ 
+      build-essential \
  && apt-get purge -y --auto-remove ${buildDependencies} \
  && rm -rf /var/lib/apt/lists/*
 
