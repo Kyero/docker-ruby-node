@@ -51,7 +51,7 @@ RUN npm -v
 RUN npm install -g yarn@1.15.2
 
 # Install GEM dependencies
-RUN gem update --system 3.1.4 \
+RUN gem update --system \
  && gem install \
       bundler:2.2.11 \
       foreman:0.84.0
