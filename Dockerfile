@@ -31,8 +31,13 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc
  # Install node
  
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 10.15.3
-RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
+RUN mkdir -p /usr/local/nvm
+RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh | bash
+
+
+ENV NODE_VERSION 14.17.0
+
+
 
 # install node and npm
 RUN . $NVM_DIR/nvm.sh \
