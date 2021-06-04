@@ -22,7 +22,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc
  && apt-get update \
  && apt-get install -y --no-install-recommends --no-install-suggests \
       g++ build-essential \
-      postgresql-client-9.6 \
+      postgresql-client-12 \
       nano \
       vim \
       less \
