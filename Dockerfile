@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.7.2
 
 LABEL maintainer "Kyero <dev@kyero.com>"
 
@@ -51,9 +51,9 @@ RUN npm -v
 RUN npm install -g yarn@1.15.2
 
 # Install GEM dependencies
-RUN gem update --system 3.0.2 \
+RUN gem update --system \
  && gem install \
-      bundler:2.0.2 \
+      bundler:2.2.11 \
       foreman:0.84.0
 
 # Persist IRB/Pry/Rails console history
