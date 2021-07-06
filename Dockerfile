@@ -17,7 +17,7 @@ ENV PORT="5000" \
     GIT_COMMITTER_EMAIL="whatever@this-user-is-not-supposed-to-git-push.anyway"
 
 # Install APT dependencies
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
  && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
  && apt-get update \
  && apt-get install -y --no-install-recommends --no-install-suggests \
